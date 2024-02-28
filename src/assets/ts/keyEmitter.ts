@@ -112,10 +112,14 @@ export default class KeyEmitter extends EventEmitter {
     // IME event
     $(document).on('compositionend', (e: any) => {
       e.originalEvent.data.split('').forEach((key: string) => {
+        console.log(`ihfazh -> in compositionend key: ${key}`);
         this.emit('keydown', key);
       });
     });
 
+    // we need to handle key press and keydown here
+    // we can handle any language with keypress
+    // but we cannot handle something like backspace in keypress, we need use keydown
     return $(document).keydown(e => {
       // IME input keycode is 229
       if (e.keyCode === 229) {
@@ -153,6 +157,7 @@ export default class KeyEmitter extends EventEmitter {
       }
 
       logger.debug('keycode', e.keyCode, 'key', key);
+      console.log(`ihfazh -> in keycode: ${key}`);
       const results = this.emit('keydown', key);
       // return false to stop propagation, if any handler handled the key
       if (_.some(results)) {

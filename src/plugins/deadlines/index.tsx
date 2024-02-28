@@ -201,6 +201,7 @@ class DeadlinesPlugin {
 
   private async getDeadlinesRoot() {
     this.log('getDeadlinesRoot');
+    // @ts-ignore
     if (this.deadlinesRoot && this.api.session.document.isValidPath(this.deadlinesRoot!)) {
       this.log('getDeadlinesRoot from cache');
       return this.deadlinesRoot!;

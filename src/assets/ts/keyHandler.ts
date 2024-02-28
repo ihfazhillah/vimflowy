@@ -123,6 +123,7 @@ export default class KeyHandler extends EventEmitter {
       await this._processKeys(recordKeyStream);
     } catch (e) {
       // console.log('caught', e, e.name);
+      // @ts-ignore
       if (e.name === 'QueueStoppedError') {
         // console.log('failed to fully play', recording);
       } else {

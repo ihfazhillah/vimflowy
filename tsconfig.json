@@ -23,7 +23,8 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "useUnknownInCatchVariables": false
   },
   "include": [
     "src"

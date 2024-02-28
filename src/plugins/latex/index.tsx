@@ -31,6 +31,7 @@ registerPlugin(
             const html = katex.renderToString(token.text.slice(2, -2), { displayMode: true });
             emit(<div key={`latex-${token.index}`} dangerouslySetInnerHTML={{__html: html}}/>);
           } catch (e) {
+            // @ts-ignore
             api.session.showMessage(e.message, { text_class: 'error' });
             emit(...wrapped.unfold(token));
           }
@@ -42,6 +43,7 @@ registerPlugin(
             const html = katex.renderToString(token.text.slice(1, -1), { displayMode: false });
             emit(<span key={`latex-${token.index}`} dangerouslySetInnerHTML={{__html: html}}/>);
           } catch (e) {
+            // @ts-ignore
             api.session.showMessage(e.message, { text_class: 'error' });
             emit(...wrapped.unfold(token));
           }

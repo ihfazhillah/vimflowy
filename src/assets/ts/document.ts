@@ -255,15 +255,19 @@ export default class Document extends EventEmitter {
       return cached;
     }
 
+    // @ts-ignore
     const [
       line, collapsed, children, parents, pluginData
-    ] = await Promise.all<Line, boolean, Array<Row>, Array<Row>, any>([
+    ] = await Promise.all([
       this.store.getLine(row),
       this.store.getCollapsed(row),
       this.store.getChildren(row),
       this.store.getParents(row),
       this.applyHookAsync('pluginRowContents', {}, { row }),
     ]);
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
     const info: RowInfo = {
       line, collapsed,
       parentRows: parents,
