@@ -117,15 +117,47 @@ export default class KeyEmitter extends EventEmitter {
       });
     });
 
+    // todo: need to handle:
+    // shift key in the insert mode to give us the actual data
+    // android soft keyboard
+
+    $(document).on('keypress', (e) => {
+
+      const isSpecial = _.some([e.altKey, e.shiftKey, e.metaKey, e.ctrlKey]);
+      if (isSpecial) {
+        return;
+      }
+
+      this.emit('keydown', e.key);
+
+    });
+
     // we need to handle key press and keydown here
     // we can handle any language with keypress
     // but we cannot handle something like backspace in keypress, we need use keydown
-    return $(document).keydown(e => {
+    return $(document).on('keydown', e => {
       // IME input keycode is 229
       if (e.keyCode === 229) {
         return false;
       }
       if (e.keyCode in ignoreMap) {
+        return true;
+      }
+
+      const isSpecial = _.some([e.shiftKey, e.ctrlKey, e.metaKey, e.altKey]);
+      const nonCharactersCode = [
+        27, // escape
+        37, 38, 39, 40, // arrows
+        35, // home
+        36, // end
+        45, // insert
+        46, // delete
+        20, // capslock
+        9, // tab
+        8, // backspace
+        13, // enter
+      ];
+      if (!isSpecial && nonCharactersCode.find(code => e.keyCode === code) === undefined) {
         return true;
       }
       let key;
@@ -156,8 +188,6 @@ export default class KeyEmitter extends EventEmitter {
         key = `meta+${key}`;
       }
 
-      logger.debug('keycode', e.keyCode, 'key', key);
-      console.log(`ihfazh -> in keycode: ${key}`);
       const results = this.emit('keydown', key);
       // return false to stop propagation, if any handler handled the key
       if (_.some(results)) {
