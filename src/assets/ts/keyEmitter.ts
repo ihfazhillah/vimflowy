@@ -91,6 +91,45 @@ const keyCodeMap: {[keyCode: number]: Key} = {
   222: '\'',
 };
 
+
+const keyCodes = [
+  'KeyA',
+  'KeyB',
+  'KeyC',
+  'KeyD',
+  'KeyE',
+  'KeyF',
+  'KeyG',
+  'KeyH',
+  'KeyI',
+  'KeyJ',
+  'KeyK',
+  'KeyL',
+  'KeyM',
+  'KeyN',
+  'KeyO',
+  'KeyP',
+  'KeyQ',
+  'KeyR',
+  'KeyS',
+  'KeyT',
+  'KeyU',
+  'KeyV',
+  'KeyW',
+  'KeyX',
+  'KeyY',
+  'KeyZ',
+  'BracketLeft',
+  'BracketRight',
+  'BackSlash',
+  'Semicolon',
+  'Quote',
+  'Comma',
+  'Period',
+  'Slash',
+  'Backquote'
+];
+
 for (let j = 1; j <= 26; j++) {
   const keyCode = j + 64;
   const letter = String.fromCharCode(keyCode);
@@ -123,6 +162,14 @@ export default class KeyEmitter extends EventEmitter {
 
     $(document).on('keypress', (e) => {
 
+      console.log({name: "keypress", keyCode: e.keyCode, code: e.code, charCode: e.charCode});
+      if (e.shiftKey) {
+        if (keyCodes.find(code => e.code === code) !== undefined){
+          this.emit('keydown', e.key);
+          return;
+        }
+      }
+
       const isSpecial = _.some([e.altKey, e.shiftKey, e.metaKey, e.ctrlKey]);
       if (isSpecial) {
         return;
@@ -144,7 +191,7 @@ export default class KeyEmitter extends EventEmitter {
         return true;
       }
 
-      const isSpecial = _.some([e.shiftKey, e.ctrlKey, e.metaKey, e.altKey]);
+      const isSpecial = _.some([e.ctrlKey, e.metaKey, e.altKey]);
       const nonCharactersCode = [
         27, // escape
         37, 38, 39, 40, // arrows
@@ -160,6 +207,13 @@ export default class KeyEmitter extends EventEmitter {
       if (!isSpecial && nonCharactersCode.find(code => e.keyCode === code) === undefined) {
         return true;
       }
+
+      // if (e.shiftKey) {
+      //   if (keyCodes.find(code => e.code === code) === undefined){
+      //     return;
+      //   }
+      // }
+
       let key;
       if (e.keyCode in keyCodeMap) {
         key = keyCodeMap[e.keyCode];
