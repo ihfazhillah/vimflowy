@@ -28,13 +28,15 @@ type TagsToRows = {[key: string]: Rows};
 type RowsToTags = {[key: number]: Tags};
 
 const tagStyle = {
-  padding: '0px 8px',
+  padding: '2px 8px',
   marginLeft: 8,
+  borderRadius: '4px'
 };
 
 const tagSearchStyle = {
-  padding: '0px 8px',
+  padding: '2px 8px',
   marginRight: 8,
+  borderRadius: '4px'
 };
 
 /*

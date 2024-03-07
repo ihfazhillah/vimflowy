@@ -27,9 +27,9 @@ type MarksToRows = {[key: string]: Row};
 type RowsToMarks = {[key: number]: Mark};
 
 const markStyle = {
-  padding: '0px 8px',
+  padding: '2px 8px',
   marginRight: 8,
-  borderRadius: 5,
+  borderRadius: 4,
 };
 
 /*
