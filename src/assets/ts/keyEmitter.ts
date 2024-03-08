@@ -92,6 +92,7 @@ const keyCodeMap: {[keyCode: number]: Key} = {
 };
 
 
+// should be handled by keypress
 const keyCodes = [
   'KeyA',
   'KeyB',
@@ -119,6 +120,18 @@ const keyCodes = [
   'KeyX',
   'KeyY',
   'KeyZ',
+  'Digit1',
+  'Digit2',
+  'Digit3',
+  'Digit4',
+  'Digit5',
+  'Digit6',
+  'Digit7',
+  'Digit8',
+  'Digit9',
+  'Digit0',
+  'Minus',
+  'Equal',
   'BracketLeft',
   'BracketRight',
   'BackSlash',
@@ -162,7 +175,7 @@ export default class KeyEmitter extends EventEmitter {
 
     $(document).on('keypress', (e) => {
 
-      console.log({name: "keypress", keyCode: e.keyCode, code: e.code, charCode: e.charCode});
+      console.log({name: 'keypress', keyCode: e.keyCode, code: e.code, charCode: e.charCode});
       if (e.shiftKey) {
         if (keyCodes.find(code => e.code === code) !== undefined){
           this.emit('keydown', e.key);
