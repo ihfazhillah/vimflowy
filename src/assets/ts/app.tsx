@@ -21,25 +21,22 @@ import * as browser_utils from './utils/browser';
 import * as errors from '../../shared/utils/errors';
 import logger from '../../shared/utils/logger';
 
-import { SerializedBlock } from './types';
+import {SerializedBlock} from './types';
 import * as Modes from './modes';
-import { RegisterTypes } from './register';
+import {RegisterTypes} from './register';
 import KeyEmitter from './keyEmitter';
 import KeyHandler from './keyHandler';
 import KeyMappings from './keyMappings';
-import { ClientStore, DocumentStore } from './datastore';
-import { SynchronousInMemory, InMemory } from '../../shared/data_backend';
-import {
-  BackendType, SynchronousLocalStorageBackend,
-  LocalStorageBackend, FirebaseBackend, ClientSocketBackend, IndexedDBBackend
-} from './data_backend';
+import {ClientStore, DocumentStore} from './datastore';
+import {InMemory, SynchronousInMemory} from '../../shared/data_backend';
+import {BackendType, ClientSocketBackend, FirebaseBackend, IndexedDBBackend, SynchronousLocalStorageBackend} from './data_backend';
 import Document from './document';
-import { PluginsManager } from './plugins';
+import {PluginsManager} from './plugins';
 import Path from './path';
 import Session from './session';
 import Config from './config';
 import vimConfig from './configurations/vim';
-import { SERVER_CONFIG } from './constants';
+import {SERVER_CONFIG} from './constants';
 
 import keyDefinitions from './keyDefinitions';
 // load actual definitions
@@ -48,7 +45,7 @@ import './definitions';
 import '../../plugins';
 import KeyBindings from './keyBindings';
 
-import AppComponent, { TextMessage } from './components/app';
+import AppComponent, {TextMessage} from './components/app';
 
 declare const window: any; // because we attach globals for debugging
 

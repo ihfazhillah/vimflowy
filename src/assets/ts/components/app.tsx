@@ -183,6 +183,7 @@ export default class AppComponent extends React.Component<Props, {}> {
               display: 'flex',
               ...getStyles(session.clientStore, ['theme-bg-primary', 'theme-trim'])
             }}>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className='center'
               onClick={async () => {
                 await session.setMode(settingsMode ? 'NORMAL' : 'SETTINGS');

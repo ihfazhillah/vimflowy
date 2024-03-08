@@ -132,6 +132,7 @@ export default class LineComponent extends React.Component<LineProps, {}> {
       lineHook = PartialUnfolder.trivial<Token, React.ReactNode>();
     }
     const LineTokenizer: PartialTokenizer = RegexTokenizerSplitter(
+      // eslint-disable-next-line no-control-regex
       new RegExp('(\n)'),
       (token: Token, emit: EmitFn<React.ReactNode>) => {
         if (token.text.length !== 1) {

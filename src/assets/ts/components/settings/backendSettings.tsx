@@ -85,6 +85,7 @@ export default class BackendSettingsComponent extends React.Component<Props, Sta
   }
 
   public render() {
+    // eslint-disable-next-line no-template-curly-in-string
     const firebaseBaseUrl = `https://console.firebase.google.com/project/${this.state.firebaseId || '${firebaseProjectId}'}`;
 
     const backendTypes: Array<{

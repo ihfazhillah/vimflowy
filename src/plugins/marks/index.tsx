@@ -1,23 +1,22 @@
 import * as _ from 'lodash';
 import * as React from 'react'; // tslint:disable-line no-unused-variable
-
 import * as errors from '../../shared/utils/errors';
-import { Logger } from '../../shared/utils/logger';
-import { PartialUnfolder, Token, EmitFn, Tokenizer } from '../../assets/ts/utils/token_unfolder';
+import {Logger} from '../../shared/utils/logger';
+import {EmitFn, PartialUnfolder, Token, Tokenizer} from '../../assets/ts/utils/token_unfolder';
 
-import { registerPlugin, PluginApi } from '../../assets/ts/plugins';
+import {PluginApi, registerPlugin} from '../../assets/ts/plugins';
 import Menu from '../../assets/ts/menu';
 import Document from '../../assets/ts/document';
-import Session, { InMemorySession } from '../../assets/ts/session';
+import Session, {InMemorySession} from '../../assets/ts/session';
 import LineComponent from '../../assets/ts/components/line';
 import Mutation from '../../assets/ts/mutations';
 import Path from '../../assets/ts/path';
-import { Col, Row } from '../../assets/ts/types';
-import { getStyles } from '../../assets/ts/themes';
+import {Row} from '../../assets/ts/types';
+import {getStyles} from '../../assets/ts/themes';
 
-import { SINGLE_LINE_MOTIONS } from '../../assets/ts/definitions/motions';
-import { INSERT_MOTION_MAPPINGS } from '../../assets/ts/configurations/vim';
-import { motionKey } from '../../assets/ts/keyDefinitions';
+import {SINGLE_LINE_MOTIONS} from '../../assets/ts/definitions/motions';
+import {INSERT_MOTION_MAPPINGS} from '../../assets/ts/configurations/vim';
+import {motionKey} from '../../assets/ts/keyDefinitions';
 
 // TODO: do this elsewhere
 declare const process: any;
@@ -221,6 +220,7 @@ export class MarksPlugin {
           const line = await session.document.getText(cursor.row);
           const matches = that.getMarkMatches(line);
           let mark = '';
+          // eslint-disable-next-line array-callback-return
           matches.map((pos) => {
             if (cursor.col >= pos[0] && cursor.col <= pos[1]) {
               mark = that.parseMarkMatch(line.slice(pos[0], pos[1]));
@@ -445,6 +445,7 @@ export class MarksPlugin {
       ) => {
         if (this.session.mode === 'NORMAL') {
           const matches = this.getMarkMatches(token.text);
+          // eslint-disable-next-line array-callback-return
           matches.map(pos => {
             let start = pos[0];
             let end = pos[1];
