@@ -1,12 +1,11 @@
 # ![Vimflowy](/static/images/vimflowy-32.png?raw=true) Vimflowy
 
-[![Build Status](https://travis-ci.org/WuTheFWasThat/vimflowy.svg?branch=master)](https://travis-ci.org/WuTheFWasThat/vimflowy?branch=master)
 
 NOTE: I don't have time to maintain this anymore, sorry!
 
 This is a productivity tool which draws some inspiration from workflowy and vim.
 
-[Try it out now!](https://www.wuthejeff.com/vimflowy)
+[Try it out now!](https://www.vimflowly.ihfazh.com)
 
 [Deploy yourself with docker!](https://hub.docker.com/r/vimflowy/vimflowy/)
 
