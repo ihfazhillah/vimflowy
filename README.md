@@ -1,9 +1,7 @@
 # ![Vimflowy](/static/images/vimflowy-32.png?raw=true) Vimflowy
 
 
-NOTE: I don't have time to maintain this anymore, sorry!
-
-This is a productivity tool which draws some inspiration from workflowy and vim.
+This is a productivity tool which draws some inspiration from workflowy and vim. Forked from https://github.com/WuTheFWasThat/vimflowy
 
 [Try it out now!](https://www.vimflowly.ihfazh.com)
 
