@@ -250,11 +250,11 @@ export default class BlockComponent extends React.Component<BlockProps, {}> {
 
         const style: React.CSSProperties = {};
 
-        let icon = 'fa-circle';
+        let icon = '';
 
         let onBulletClick: (() => void) | undefined = undefined;
         if (cachedChild.childRows.length) {
-          icon = cachedChild.collapsed ? 'fa-plus-circle' : 'fa-minus-circle';
+          icon = cachedChild.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
           const onBulletClickProp = this.props.onBulletClick;
           if (onBulletClickProp != null) {
             onBulletClick = () => onBulletClickProp(path);
@@ -263,7 +263,7 @@ export default class BlockComponent extends React.Component<BlockProps, {}> {
         }
 
         let bullet = (
-          <i className={`fa ${icon} bullet`} key='bullet'
+          <i className={`fa ${icon} bullet` } key='bullet'
             style={style} onClick={onBulletClick}
             data-ancestry={JSON.stringify(path.getAncestry())}
           >
