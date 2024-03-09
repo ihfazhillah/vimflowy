@@ -263,7 +263,7 @@ export default class BlockComponent extends React.Component<BlockProps, {}> {
         }
 
         let bullet = (
-          <i className={`fa ${icon} bullet` } key='bullet'
+          <i className={`fa ${icon} fa-sm bullet` } key='bullet'
             style={style} onClick={onBulletClick}
             data-ancestry={JSON.stringify(path.getAncestry())}
           >
@@ -271,10 +271,18 @@ export default class BlockComponent extends React.Component<BlockProps, {}> {
         );
         bullet = session.applyHook('renderBullet', bullet, { path });
 
+        const onBulletItemClick = async () => {
+          await session.zoomInto(path);
+          session.save();
+          this.props.fetchData();
+
+        };
+
         return (
-          <div key={path.row}>
+          <div className='block-line' key={path.row}>
             {cloneIcon}
             {bullet}
+            <i className='fa fa-circle fa-2xs bullet-item' onClick={() => onBulletItemClick()}/>
             <BlockComponent key='block'
              cached={cachedChild}
              topLevel={false}
