@@ -139,7 +139,10 @@ const keyCodes = [
   'Comma',
   'Period',
   'Slash',
-  'Backquote'
+  'Backquote',
+
+  // sometimes, we do space with the shift key. We need to handle it
+  'Space',
 ];
 
 for (let j = 1; j <= 26; j++) {
