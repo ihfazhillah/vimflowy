@@ -199,6 +199,7 @@ export default class BlockComponent extends React.Component<BlockProps, {}> {
           style={{
             fontSize: this.props.topLevel ? 20 : undefined,
             marginBottom: this.props.topLevel ? 10 : undefined,
+            fontWeight: this.props.topLevel ? 800 : undefined
           }}
           cursorsTree={cursorsTree}
           cursorBetween={this.props.cursorBetween}
