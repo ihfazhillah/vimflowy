@@ -10,6 +10,9 @@ const boldClass = 'bold';
 const italicsClass = 'italic';
 const underlineClass = 'underline';
 const codeClass = 'code';
+const h1Class = 'h1';
+const h2Class = 'h2';
+const h3Class = 'h3';
 
 registerPlugin(
   {
@@ -76,7 +79,41 @@ registerPlugin(
           hideBorderAndModify(1, 1, (char_info) => {
             char_info.renderOptions.classes[codeClass] = true;
           })
-      ));
+      )).then(RegexTokenizerModifier(
+        matchWordRegex('^#(.*?)*$'),
+        (char_info) => {
+          char_info.forEach((info, index) => {
+            if (index === 0) {
+              info.renderOptions.classes.hidden = true;
+            } else {
+              info.renderOptions.classes[h1Class] = true;
+            }
+          });
+        }
+      )).then(RegexTokenizerModifier(
+        matchWordRegex('^##(.*?)*$'),
+        (char_info) => {
+          char_info.forEach((info, index) => {
+            if (index < 2) {
+              info.renderOptions.classes.hidden = true;
+            } else {
+              info.renderOptions.classes[h2Class] = true;
+            }
+          });
+        }
+      )).then(RegexTokenizerModifier(
+        matchWordRegex('^###(.*?)*$'),
+        (char_info) => {
+          char_info.forEach((info, index) => {
+            if (index < 3) {
+              info.renderOptions.classes.hidden = true;
+            } else {
+              info.renderOptions.classes[h3Class] = true;
+            }
+          });
+        }
+      ))
+        ;
     });
   },
   (api => api.deregisterAll()),

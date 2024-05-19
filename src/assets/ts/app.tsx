@@ -500,6 +500,10 @@ $(document).ready(async () => {
     renderMain(); // fire and forget
   });
 
+  $(window).on('popstate', async () => {
+    console.log("popstated");
+  });
+
   $(window).on('unload', () => {
     session.exit(); // fire and forget
   });
